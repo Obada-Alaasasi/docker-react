@@ -1,0 +1,16 @@
+FROM node:16-alpine
+
+#crate user node
+USER node
+
+WORKDIR /app
+
+#give permissions to files in container to user node
+COPY --chown=node:node package.json .
+RUN npm install
+COPY --chown=node:node . .
+
+CMD ["npm", "run", "start"]
+
+# to mount volume: 
+#   docker run -v /app/node_modules -v ~/docker_project/react_app/frontend:/app -p 3000:3000 obada/frontend-dev

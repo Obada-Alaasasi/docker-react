@@ -6,4 +6,4 @@ before install:
   - docker build -f Dockerfile.dev -t obada/frontend .
 
 script: 
-  - docker run -e CI=true -p 8080:80 obada/frontend run npm test
+  - docker run -e CI=true -p 8080:80 obada/frontend npm run test

@@ -3,7 +3,8 @@ FROM node:16-alpine
 #crate user node
 USER node
 
-WORKDIR /app
+RUN mkdir -p /home/node/app
+WORKDIR /home/node/app
 
 #give permissions to files in container to user node
 COPY --chown=node:node ./package.json ./

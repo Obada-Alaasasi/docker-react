@@ -1,0 +1,9 @@
+sudo: required
+services: 
+  - docker
+
+before install:
+  - docker built -f Dockerfile.dev -t obada/frontend
+
+script: 
+  - docker run -p 8080:80 obada/frontend run npm test

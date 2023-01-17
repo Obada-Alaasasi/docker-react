@@ -6,9 +6,9 @@ USER node
 WORKDIR /app
 
 #give permissions to files in container to user node
-COPY --chown=node:node package.json .
+COPY --chown=node:node ./package.json ./
 RUN npm install
-COPY --chown=node:node . .
+COPY --chown=node:node ./ ./
 
 CMD ["npm", "run", "start"]
 

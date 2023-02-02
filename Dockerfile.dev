@@ -11,7 +11,6 @@ COPY --chown=node:node ./package.json ./
 RUN npm install
 COPY --chown=node:node ./ ./
 
-EXPOSE 80
 CMD ["npm", "run", "start"]
 
 # to mount volume: 

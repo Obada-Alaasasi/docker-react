@@ -6,7 +6,7 @@ before install:
   - docker build -f Dockerfile.dev -t obada/frontend .
 
 script: 
-  - docker run -e CI=true -p 8080:80 obada/frontend npm run test
+  - docker run -e CI=true obada/frontend npm run test
 
 # node.js tests are interactive by default
 # since a travis CI process is non interactive, and has to end with an exit code of 0, an interactive set will basically

@@ -7,3 +7,20 @@ before install:
 
 script: 
   - docker run -e CI=true -p 8080:80 obada/frontend npm run test
+
+# node.js tests are interactive by default
+# since a travis CI process is non interactive, and has to end with an exit code of 0, an interactive set will basically
+#   run forever.
+# CI=true, will make the test terminates once it finishes the first time
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-northeast-1"
+  app: "Frontend"
+  env: "Frontend-env"
+  bucket_name: "elasticbeanstalk-ap-northeast-1-432022256646"
+  bucket_path: "Frontend"
+  os:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
